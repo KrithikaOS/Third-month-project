@@ -19,15 +19,22 @@ public class Test extends AbstractBaseEntity {
     @Index
     private String testURL;
     private long expireTime;
+
     @IgnoreSave
     private List<Question> queList;
-    @IgnoreSave
+
+    @Index
     private String userEmail;
+
+    @Index
+    private String createdBy;
+
     private TestStatus status;
+
     @Serialize
     private List<String> questionIds;
 
-    private String result;
+    private String result="NIL";
 
 
 }

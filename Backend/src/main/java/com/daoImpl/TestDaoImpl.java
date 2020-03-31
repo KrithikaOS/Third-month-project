@@ -56,6 +56,11 @@ public class TestDaoImpl implements TestDao {
     }
 
     @Override
+    public List<Test> getAllTestByUser(String userId) {
+        return ObjectifyService.ofy().load().type(Test.class).filter("createdBy",userId).order("-createdAt").limit(50).list();
+    }
+
+    @Override
     public String validateTest(Test test, Map testValues) {
         int correctAns = 0;
         int unansweredQuestion = 0;

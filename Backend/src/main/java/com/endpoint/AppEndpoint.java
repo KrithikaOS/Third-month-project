@@ -7,6 +7,7 @@ import com.filters.ApiKeyCheck;
 import com.response.ApiResponse;
 import com.services.TemplateService;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -47,6 +48,13 @@ public class AppEndpoint extends AbstractBaseApiEndpoint {
             if (session != null) {
                 if(session.getAttribute("accountType")==null){
                     session.invalidate();
+                    Cookie[] cookies = servletRequest.getCookies();
+                    if (cookies.length > 0) {
+                        for (Cookie cookie : cookies) {
+                            cookie.setMaxAge(0);
+                            servletResponse.addCookie(cookie);
+                        }
+                    }
                     String result = TemplateService.modify(servletContext,new ArrayList<>(),"/QuizHubApplication/html/index.html");
                     return Response.status(200).entity(result).build();
                 }

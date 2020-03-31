@@ -6,6 +6,7 @@ import com.services.TemplateService;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -21,6 +22,9 @@ public class SessionFilter implements ContainerRequestFilter {
 
     @Context
     HttpServletRequest servletRequest;
+
+    @Context
+    HttpServletResponse servletResponse;
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
@@ -39,6 +43,7 @@ public class SessionFilter implements ContainerRequestFilter {
             if (cookies.length > 0) {
                 for (Cookie cookie : cookies) {
                     cookie.setMaxAge(0);
+                    servletResponse.addCookie(cookie);
                 }
             }
             response.setError("no session exist, please login");

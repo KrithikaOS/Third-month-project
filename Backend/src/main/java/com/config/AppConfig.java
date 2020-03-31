@@ -2,6 +2,7 @@ package com.config;
 import com.endpoint.*;
 
 import com.entities.*;
+import com.exceptionHandler.ExceptionHandler;
 import com.filters.ApiFilter;
 import com.filters.ApiKeyCheck;
 import com.filters.SessionCheck;
@@ -60,6 +61,7 @@ public class AppConfig extends Application {
         classes.add(ApiFilter.class);
         classes.add(TemplateService.class);
         classes.add(SessionFilter.class);
+        classes.add(ExceptionHandler.class);
 
     }
 

@@ -28,6 +28,7 @@ public class ApiFilter implements ContainerRequestFilter {
             response.setError("No Authorization APIKey");
             requestContext.abortWith(Response.status(401).entity(response).build());
         }
+
     }
 
 }

@@ -2,186 +2,190 @@
 <html>
 
 <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta http-equiv="cache-control" content="no-cache; no-store; must-revalidate">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
     <title>Dashboard</title>
+    <script src="https://use.fontawesome.com/a2e210f715.js"></script>
     <link href="/QuizHubApplication/css/Dashboard.css" rel="stylesheet">
+    <link href="/QuizHubApplication/css/Stars.css" rel="stylesheet">
     <script src="/QuizHubApplication/js/QuestionAddition.js"></script>
     <script src="/QuizHubApplication/js/Questions.js"></script>
     <script src="/QuizHubApplication/js/AjaxCall.js"></script>
     <script src="/QuizHubApplication/js/ClientAuthentication.js"></script>
     <script src="/QuizHubApplication/js/TestCreation.js"></script>
     <script src="/QuizHubApplication/js/UserAuthentication.js"></script>
+    <script src="/QuizHubApplication/js/DisplayCreatedTests.js"></script>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 
 </head>
 <!-- Body Starts Here -->
 
 <body id="body" style="overflow:hidden;">
-    <div id="question">
+<div id="question">
 
-        <div id="popupForm">
-            Add Question Form
-            <form id="form" name="form">
-                <!-- <form id="form" name="form"> -->
-                <h2 id="questionNum"> 1 </h2>
-                <p id="error"></p>
-                <hr> Tag: <input type="radio" id="java" name="tag" value="java">JAVA
-                <input type="radio" id="javascript" name="tag" value="javascript">JAVASCRIPT
-                <input type="radio" id="html" name="tag" value="html">HTML
-                <input type="radio" id="css" name="tag" value="css">CSS
-                <input type="radio" id="http" name="tag" value="http">HTTP<br><br> Description: <textarea id="description" name="description" placeholder="Add your Question here"></textarea> <br>Options: <input type="text" id="A" name="option" placeholder="Option A">
-                <input type="text" id="B" name="option" placeholder="Option B">
-                <input type="text" id="C" name="option" placeholder="Option C">
-                <input type="text" id="D" name="option" placeholder="Option D"> <br><br> Correct Answer:<input type="radio" id="optionA" name="correctAnswer" value="A">A
-                <input type="radio" id="optionB" name="correctAnswer" value="B">B
-                <input type="radio" id="optionC" name="correctAnswer" value="C">C
-                <input type="radio" id="optionD" name="correctAnswer" value="D">D <br><br>
-                <!-- <a href="#" onclick="checkEmpty(this.length) ; return false" id="add" name="link" value="add">Add</a>
-                <a href="javascript:cancelAddQuestionForm()" id="cancel">Cancel</a>
-                 <a href="javascript:checkEmpty(this.value)" id="add" name="link" value="add">Add</a> 
-                <a href="javascript:checkEmpty(this.value)" id="save" name="link" value="save">Submit</a> -->
-                <!--  This works same as type="button" <button onclick="checkEmpty(this.id);return false;" id="add" name="link" value="add">Add</button> -->
-<<<<<<< HEAD
-                <button onclick="checkEmpty(this.id)" type="button" id="add">Add</button>
-                <button onclick="checkEmpty(this.id)" type="button" id="save" >Submit</button>
-=======
-                <button onclick="checkEmpty(this.id)" type="button" id="add" name="link" value="add">Add</button>
-                <button onclick="checkEmpty(this.id)" id="save" name="link" value="save">Submit</button>
->>>>>>> ab6a10dd545696b85658b73b06a4b085087fe591
-                <button onclick="cancelAddQuestionForm()" id="cancelAddQuestion">Cancel</button>
-            </form>
-        </div>
-
+    <div id="popupForm">
+        Add Question Form
+        <form id="form" name="form">
+            <!-- <form id="form" name="form"> -->
+            <h2 id="questionNum"> 1 </h2>
+            <p id="error"></p>
+            <hr> Tag: <input type="radio" id="java" name="tag" value="java">JAVA
+            <input type="radio" id="javascript" name="tag" value="javascript">JAVASCRIPT
+            <input type="radio" id="html" name="tag" value="html">HTML
+            <input type="radio" id="css" name="tag" value="css">CSS
+            <input type="radio" id="http" name="tag" value="http">HTTP<br><br> Description: <textarea id="description" name="description" placeholder="Add your Question here"></textarea> <br>Options: <input type="text" id="A" name="option" placeholder="Option A">
+            <input type="text" id="B" name="option" placeholder="Option B">
+            <input type="text" id="C" name="option" placeholder="Option C">
+            <input type="text" id="D" name="option" placeholder="Option D"> <br><br> Correct Answer:<input type="radio" id="optionA" name="correctAnswer" value="A">A
+            <input type="radio" id="optionB" name="correctAnswer" value="B">B
+            <input type="radio" id="optionC" name="correctAnswer" value="C">C
+            <input type="radio" id="optionD" name="correctAnswer" value="D">D <br><br>
+            <!-- <a href="#" onclick="checkEmpty(this.length) ; return false" id="add" name="link" value="add">Add</a>
+            <a href="javascript:cancelAddQuestionForm()" id="cancel">Cancel</a>
+            <a href="javascript:checkEmpty(this.value)" id="add" name="link" value="add">Add</a>
+            <a href="javascript:checkEmpty(this.value)" id="save" name="link" value="save">Submit</a> -->
+            <!--  This works same as type="button" <button onclick="checkEmpty(this.id);return false;" id="add" name="link" value="add">Add</button> -->
+            <button onclick="checkEmpty(this.id)" type="button" id="add">Add</button>
+            <button onclick="checkEmpty(this.id)" type="button" id="save">Submit</button>
+            <button onclick="cancelAddQuestionForm()" id="cancelAddQuestion">Cancel</button>
+        </form>
     </div>
 
-    <div id="validateEmailForm">
+</div>
 
-        <div id="popupFormvalidateEmail">
-            Create Test Form
-            <form id="formValidateEmail" name="formValidateEmail">
+<div id="validateEmailForm">
 
-                <h2> Enter the email id you want to create the test for </h2>
-                <hr>
-                <input type="email" id="userEmail" placeholder="Enter the email">
-                <p id="demo"></p><br> <br>
+    <div id="popupFormvalidateEmail">
+        Create Test Form
+        <form id="formValidateEmail" name="formValidateEmail">
 
-                <button onclick="cancelTestForm()" id="cancelTestForm">Cancel</button>
-                <button type="button" onclick="checkValidEmail()" id="check">Next</button>
-            </form>
-        </div>
-        <!-- Popup Div Ends Here -->
+            <h2> Enter the email id you want to create the test for </h2>
+            <hr>
+            <input type="email" id="userEmail" placeholder="Enter the email">
+            <p id="demo"></p><br> <br>
+
+            <button onclick="cancelTestForm()" id="cancelTestForm">Cancel</button>
+            <button type="button" onclick="checkValidEmail()" id="check">Next</button>
+        </form>
     </div>
+    <!-- Popup Div Ends Here -->
+</div>
 
 
-    <div id="userSignUpForm">
+<div id="userSignUpForm">
 
-        <div id="popupFormUserSignUp">
-            Create Test Form
-            <form id="formUserSignUp" name="formUserSignUp">
+    <div id="popupFormUserSignUp">
+        Create Test Form
+        <form id="formUserSignUp" name="formUserSignUp">
 
-                <h2> User details </h2>
-                <hr> Email: <label id="userEmailID"></label> <br> <br>
-                <!-- <input type="email" id="userEmailID" disabled> -->Password:
-                <input type="password" id="userPassword" required> <br> <br>First Name: <input type="text" id="firstNameUser" required><br> <br> Last Name: <input type="text" id="lastNameUser" required> <br> <br>
-                <button onclick="checkEmptyUserSignUpForm()" id="checkEmptyUserDetails">Next</button>
-                <button onclick="cancelUserSignUpForm()" id="cancelUserSignUp">Cancel</button>
-            </form>
-        </div>
-        <!-- Popup Div Ends Here -->
+            <h2> User details </h2>
+            <hr> Email: <label id="userEmailID"></label> <br> <br>
+            <!-- <input type="email" id="userEmailID" disabled> -->Password:
+            <input type="password" id="userPassword" required> <br> <br>First Name: <input type="text" id="firstNameUser" required><br> <br> Last Name: <input type="text" id="lastNameUser" required> <br> <br>
+            <button onclick="checkEmptyUserSignUpForm()" type="button" id="checkEmptyUserDetails">Next</button>
+            <button onclick="cancelUserSignUpForm()" type="button" id="cancelUserSignUp">Cancel</button>
+        </form>
     </div>
+    <!-- Popup Div Ends Here -->
+</div>
 
-    <div id="DisplayQuestions">
+<div id="DisplayQuestions">
 
-        <div id="popupFormDisplayQuestions">
-            Display Questions
-            <!-- <form id="formDisplayQuestions" name="formUserSignUp">
+    <div id="popupFormDisplayQuestions">
 
-                <h2> User details </h2>
-                <hr> Email: <label id="userEmailID"></label> <br> <br> Password:
-                <input type="password" id="userPassword" required> <br> <br>First Name: <input type="text" id="firstNameUser" required><br> <br> Last Name: <input type="text" id="lastNameUser" required> <br> <br>
-                <button onclick="checkEmptyUserSignUpForm()" id="checkEmptyUserDetails">Next</button>
-                <button onclick="cancelUserSignUpForm()" id="cancelUserSignUp">Cancel</button>
-            </form> -->
-        </div>
-        <div id="cancelQue">
-            <button onclick="cancelDisplayQuestions()" id="cancelDisplayQuestions">Cancel</button>
-        </div>
     </div>
+    <div id="cancelQue">
+        <button onclick="cancelDisplayQuestions()" id="cancelDisplayQuestions">Cancel</button>
+    </div>
+</div>
 
-    <!-- Button trigger modal -->
-    <!--<button type="button" id="popup" onclick="openAddQuestionForm()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Add Question
-  </button>
 
-    
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Question Form</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-                </div>
-                <div class="modal-body">
-                    <form action="#" id="form" method="post" name="form">
-                        <hr> Tag: <input type="radio" id="java" name="tag" value="java">JAVA
-                        <input type="radio" id="javascript" name="tag" value="javascript">JAVASCRIPT
-                        <input type="radio" id="html" name="tag" value="html">HTML
-                        <input type="radio" id="css" name="tag" value="css">CSS
-                        <input type="radio" id="http" name="tag" value="http">HTTP<br><br> Status: <input type="radio" id="ACTIVE" name="status" value="ACTIVE"> ACTIVE
-                        <input type="radio" id="DELETED" name="status" value="DELETED"> DELETED <br><br>Description: <textarea id="description" name="description" placeholder="Add your Question here"></textarea> Options: <input type="text" id="A" name="option"
-                            placeholder="Option A">
-                        <input type="text" id="B" name="option" placeholder="Option B">
-                        <input type="text" id="C" name="option" placeholder="Option C">
-                        <input type="text" id="D" name="option" placeholder="Option D">
-                        <input type="text" id="correctAnswer" placeholder="Answer Option"> <br> <br>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="submit" onclick="cancelAddQuestionForm()">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="submit" onclick="checkEmpty()">Add</button>
-                </div>
+
+<div id="DisplayTests">
+
+    <table style="border: 1px solid black;" id="popupFormDisplayTests">
+
+
+    </table>
+    <div id="cancelTest">
+        <button onclick="cancelDisplayTests()" id="cancelDisplayTests">Cancel</button>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<!--<button type="button" id="popup" onclick="openAddQuestionForm()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+Add Question
+</button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Question Form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+            </div>
+            <div class="modal-body">
+                <form action="#" id="form" method="post" name="form">
+                    <hr> Tag: <input type="radio" id="java" name="tag" value="java">JAVA
+                    <input type="radio" id="javascript" name="tag" value="javascript">JAVASCRIPT
+                    <input type="radio" id="html" name="tag" value="html">HTML
+                    <input type="radio" id="css" name="tag" value="css">CSS
+                    <input type="radio" id="http" name="tag" value="http">HTTP<br><br> Status: <input type="radio" id="ACTIVE" name="status" value="ACTIVE"> ACTIVE
+                    <input type="radio" id="DELETED" name="status" value="DELETED"> DELETED <br><br>Description: <textarea id="description" name="description" placeholder="Add your Question here"></textarea> Options: <input type="text" id="A" name="option"
+                        placeholder="Option A">
+                    <input type="text" id="B" name="option" placeholder="Option B">
+                    <input type="text" id="C" name="option" placeholder="Option C">
+                    <input type="text" id="D" name="option" placeholder="Option D">
+                    <input type="text" id="correctAnswer" placeholder="Answer Option"> <br> <br>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="submit" onclick="cancelAddQuestionForm()">Cancel</button>
+                <button type="button" class="btn btn-primary" id="submit" onclick="checkEmpty()">Add</button>
             </div>
         </div>
-    </div> -->
+    </div>
+</div> -->
 
 
-    <!-- Display Popup Button -->
-    <h1>Welcome to the Question Hub. You can add questions , create tests .</h1>
-    <button id="popup" onclick="openAddQuestionForm()">Add Question</button>
-    <button id="displayQue" onclick="openDisplayQuestions()"> Display Questions</button>
-    <button type="button" id="createTest" onclick="openCreateTestForm()">Create Test</button> <br><br>
-    <button type="button" id="logout" onclick="logOutClient()">LogOut</button>
-    <p id="testLink"></p>
-    <script>
-        window.onload = loadFunctions;
+<!-- Display Popup Button -->
+<h1>Welcome to the Question Hub. You can add questions, view them and create tests .</h1>
+<button id="popup" onclick="openAddQuestionForm()">Add Question</button>
+<button id="displayQue" onclick="openDisplayQuestions()"> Display Questions</button>
+<button id="createTest" type="button" onclick="openCreateTestForm()">Create Test</button>
+<button id="tests" type="button" onclick="openCreatedTests()">Tests </button><br><br>
+<button id="logout" type="button" onclick="logOutClient()">LogOut</button>
+<p id="testLink"></p>
+<script>
+            window.onload = loadFunctions;
 
-        function loadFunctions() {
-<<<<<<< HEAD
-               displayPage();
-=======
-            //    displayPage();
->>>>>>> ab6a10dd545696b85658b73b06a4b085087fe591
-            displayTestUrl();
+            function loadFunctions() {
+                //  displayPage();
+                displayTestUrl();
 
-        }
-
-        function displayPage() {
-            var session = document.cookie.indexOf('JSESSIONID=');
-            if (session == -1) {
-                document.write("You are not allowed to visit this page.Please Log in");
             }
-        }
 
-        function displayTestUrl() {
-            document.getElementById('testLink').innerHTML = "TestURL:" + localStorage.getItem("testURL");
-            localStorage.removeItem("testURL");
-        }
-    </script>
-    <!-- <button type="button" id="logout" >Log out</button> -->
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+            function displayPage() {
+                var session = document.cookie.indexOf('JSESSIONID=');
+                if (session == -1) {
+                    document.write("You are not allowed to visit this page.Please Log in");
+                }
+            }
+
+            function displayTestUrl() {
+                document.getElementById('testLink').innerHTML = "TestURL:" + localStorage.getItem("testURL");
+                localStorage.removeItem("testURL");
+            }
+        </script>
+<!-- <button type="button" id="logout" >Log out</button> -->
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 </body>
 <!-- Body Ends Here -->
 

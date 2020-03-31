@@ -27,10 +27,13 @@ public class Question extends AbstractBaseEntity {
     private Map<Option,String> option;
 
     private Option correctAns;
+
     @Index
     private int averageRating;
 
     private int noOfUsersRated;
+
+    private int totalRating;
 
 
     @OnSave

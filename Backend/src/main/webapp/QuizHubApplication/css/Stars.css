@@ -1,0 +1,45 @@
+.rating_widgets {
+    display: flex;
+    margin-top: 25px;
+}
+
+.rating {
+    border: none;
+    float: left;
+}
+
+.rating>input {
+    display: none;
+}
+
+.rating>label:before {
+    margin: 2px;
+    font-size: 15px;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+
+
+/* .rating>.half:before {
+    content: "\f089";
+    position: absolute;
+} */
+
+.rating>label {
+    color: #ddd;
+    float: right;
+}
+
+.rating>input:checked~label,
+.rating:not(:checked),
+.rating:not(:checked) {
+    color: #FFD700;
+}
+
+.rating>input:checked,
+.rating>input:checked,
+.rating>input:checked~label,
+.rating>input:checked~label {
+    color: rgb(248, 219, 54);
+}

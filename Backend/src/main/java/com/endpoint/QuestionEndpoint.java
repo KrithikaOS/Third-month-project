@@ -1,21 +1,14 @@
 package com.endpoint;
 
-import com.Constants.Constant;
 import com.daoImpl.QuestionDaoImpl;
 import com.entities.Question;
 import com.entities.Rate;
 
-import com.entities.RatedQuestion;
 import com.entities.User;
 import com.enums.AccountType;
 import com.filters.ApiKeyCheck;
 import com.filters.SessionCheck;
-import com.google.appengine.api.datastore.Cursor;
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.api.datastore.QueryResultIterator;
 import com.googlecode.objectify.ObjectifyService;
-import com.googlecode.objectify.cmd.Query;
 import com.response.ApiResponse;
 import org.jboss.resteasy.annotations.cache.NoCache;
 
@@ -23,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -223,7 +217,7 @@ public class QuestionEndpoint extends AbstractBaseApiEndpoint {
 //                session.invalidate();
 //            }
 //        }
-        try {
+
 //            if (servletRequest.getSession(false) != null) {
                 if (session.getAttribute("accountType") != null && session.getAttribute("accountType").equals(AccountType.ADMIN)) {
                     if (questionOption.checkQuestionValid(questionDetail.get("question"))) {
@@ -241,27 +235,30 @@ public class QuestionEndpoint extends AbstractBaseApiEndpoint {
 //                response.setError("no session exist");
 //                return Response.status(401).entity(response).build();
 //            }
-        } catch (Exception e) {
-            response.setError(e.toString());
-            return Response.status(500).entity(response).build();
-        }
+
     }
 
     @POST
     @Path("/giveRating")
-    public Response giveRating(Map<String,List<RatedQuestion>> ratingDetails) {
+    public Response giveRating(Rate rating) {
         ApiResponse response = new ApiResponse();
         HttpSession session = servletRequest.getSession(false);
         try {
             if (servletRequest.getSession(false) != null) {
                 if (session.getAttribute("accountType") != null && session.getAttribute("accountType").equals(AccountType.ADMIN)) {
                     String userId=(session.getAttribute("userId").toString());
-                    List<RatedQuestion> ratings = ratingDetails.get("ratings");
+
                     com.googlecode.objectify.Key userKey= com.googlecode.objectify.Key.create(User.class,userId);
                     User user= (User) ObjectifyService.ofy().load().key(userKey).now();
-                    user.setUserRatedQuestion(ratings);
-
-                    if (questionOption.rateQuestion(ratings, userId)) {
+                    Map<String,Integer> currentUserRatedQuestion = user.getUserRatedQuestion();
+                    if(currentUserRatedQuestion == null){
+                        currentUserRatedQuestion = new HashMap<>();
+                    }
+                    currentUserRatedQuestion.put(rating.getQuestionId(),rating.getRating());
+                    user.setUserRatedQuestion(currentUserRatedQuestion);
+                    ObjectifyService.ofy().save().entity(user).now();
+                    rating.setUserId(userId);
+                    if (questionOption.rateQuestion(rating)) {
                         ObjectifyService.ofy().save().entity(user).now();
                         response.setOk(true);
                         response.addData("msg", "rated");

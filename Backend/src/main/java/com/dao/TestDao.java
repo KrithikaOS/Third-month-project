@@ -10,4 +10,5 @@ public interface TestDao {
    public boolean saveTest(Test test);
    public String validateTest(Test test, Map testValues);
    public boolean checkTestValid(List<String> questionIds);
+   public List<Test> getAllTestByUser(String userId);
 }

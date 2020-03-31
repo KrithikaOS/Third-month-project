@@ -47,8 +47,8 @@ function addUser()
 function loginUser() {
 
     if (document.getElementById('password').value == "") {
-        var errorMsg = "Please enter the password";
-        document.getElementById("errorMsg").innerHTML = errorMsg;
+
+        document.getElementById("error").innerHTML = "Please enter a password";
         return false;
 
     }
@@ -64,16 +64,20 @@ function loginUser() {
 
     }).then((userLoginResponse) => {
         //making ajax call if user login promise is resolved
-        var currentURL = window.location.href + "/testStart";
-        makeAjaxCall(currentURL, {
-            method: 'GET',
-            async: true
-        }).then((startTestResponse) => {
-            location.replace(window.location.href + "/testStart");
-            console.log("test start" + startTestResponse);
-        }).catch(error => { console.log("error", error); });
+        location.replace(window.location.href + "/testStart");
+        // var currentURL = window.location.href + "/testStart";
+        // makeAjaxCall(currentURL, {
+        //     method: 'GET',
+        //     async: true
+        // }).then((startTestResponse) => {
+        //     location.replace(window.location.href + "/testStart");
+        //     console.log("test start" + startTestResponse);
+        // }).catch(error => { console.log("error", error); });
 
 
-    }).catch(error => { console.log("error", error); });
+    }).catch(error => {
+        document.getElementById("error").innerHTML = "Password incorrect";
+        console.log("error", error);
+    });
 
 }
